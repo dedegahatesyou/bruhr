@@ -1,0 +1,283 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("pedroX gui", "BloodTheme")
+local Main = Window:NewTab("Main", "")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("zDedeGa Lock 2.0", "Best lock made by zDedeGa", function()
+    loadstring(game:HttpGet(("https://pastebin.com/raw/wPK9ukJA"),true))()
+end)
+
+MainSection:NewButton("Fly [x]", "Slow fly, gonna be changed soon", function()
+    			local plr = game.Players.LocalPlayer
+	local mouse = plr:GetMouse()
+
+	localplayer = plr
+
+	if workspace:FindFirstChild("Core") then
+		workspace.Core:Destroy()
+	end
+
+	local Core = Instance.new("Part")
+	Core.Name = "Core"
+	Core.Size = Vector3.new(0.05, 0.05, 0.05)
+
+	spawn(function()
+		Core.Parent = workspace
+		local Weld = Instance.new("Weld", Core)
+		Weld.Part0 = Core
+		Weld.Part1 = localplayer.Character.LowerTorso
+		Weld.C0 = CFrame.new(0, 0, 0)
+	end)
+
+	workspace:WaitForChild("Core")
+
+	local torso = workspace.Core
+	flying = true
+	local speed=10
+	local keys={a=false,d=false,w=false,s=false} 
+	local e1
+	local e2
+	local function start()
+		local pos = Instance.new("BodyPosition",torso)
+		local gyro = Instance.new("BodyGyro",torso)
+		pos.Name="EPIXPOS"
+		pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+		pos.position = torso.Position
+		gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+		gyro.cframe = torso.CFrame
+		repeat
+			wait()
+			localplayer.Character.Humanoid.PlatformStand=true
+			local new=gyro.cframe - gyro.cframe.p + pos.position
+			if not keys.w and not keys.s and not keys.a and not keys.d then
+				speed=5
+			end
+			if keys.w then 
+				new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+				speed=speed+0
+			end
+			if keys.s then 
+				new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+				speed=speed+0
+			end
+			if keys.d then 
+				new = new * CFrame.new(speed,0,0)
+				speed=speed+0
+			end
+			if keys.a then 
+				new = new * CFrame.new(-speed,0,0)
+				speed=speed+0
+			end
+			if speed>10 then
+				speed=5
+			end
+			pos.position=new.p
+			if keys.w then
+				gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+			elseif keys.s then
+				gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+			else
+				gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+			end
+		until flying == false
+		if gyro then gyro:Destroy() end
+		if pos then pos:Destroy() end
+		flying=false
+		localplayer.Character.Humanoid.PlatformStand=false
+		speed=10
+	end
+	e1=mouse.KeyDown:connect(function(key)
+		if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+		if key=="w" then
+			keys.w=true
+		elseif key=="s" then
+			keys.s=true
+		elseif key=="a" then
+			keys.a=true
+		elseif key=="d" then
+			keys.d=true
+		elseif key=="x" then
+			if flying==true then
+				flying=false
+			else
+				flying=true
+				start()
+			end
+		end
+	end)
+	e2=mouse.KeyUp:connect(function(key)
+		if key=="w" then
+			keys.w=false
+		elseif key=="s" then
+			keys.s=false
+		elseif key=="a" then
+			keys.a=false
+		elseif key=="d" then
+			keys.d=false
+		end
+	end)
+	start()
+end)
+
+MainSection:NewButton("ClickTP", "Best click tp made by zDedeGa", function()
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "zDedeGa Click TP"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+local ESPtab = Window:NewTab("ESP")
+local ESPscript = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+local EspSection = ESPtab:NewSection("ESP")
+EspSection:NewToggle(
+    "ESP",
+    "ESP",
+    function(L_201_arg0)
+	ESPscript:Toggle(L_201_arg0)
+end
+)
+EspSection:NewToggle(
+    "Tracers",
+    "ESP Tracers",
+    function(L_202_arg0)
+	ESPscript.Tracers = L_202_arg0
+end
+)
+EspSection:NewToggle(
+    "Names",
+    "ESP Names",
+    function(L_203_arg0)
+	ESPscript.Names = L_203_arg0
+end
+)
+EspSection:NewToggle(
+    "Boxes",
+    "ESP Boxes",
+    function(L_204_arg0)
+	ESPscript.Boxes = L_204_arg0
+end
+)
+
+local AnimationChanger = Window:NewTab("AnimationChanger")
+local AnimChangerTab = AnimationChanger:NewSection("Anim")
+
+AnimChangerTab:NewButton("zombie and oldschool", "yo", function()
+	local L_205_ = game.Players.LocalPlayer.Character.Animate
+	L_205_.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616158929"
+	L_205_.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616160636"
+	L_205_.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+	L_205_.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+	L_205_.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=2510197830"
+	L_205_.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=5319839762"
+end)
+
+AnimChangerTab:NewButton("zombie and mage", "yo", function()
+	local L_206_ = game.Players.LocalPlayer.Character.Animate
+	L_206_.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616158929"
+	L_206_.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616160636"
+	L_206_.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+	L_206_.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+	L_206_.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083218792"
+	L_206_.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+end)
+
+
+
+
+local Teleports = Window:NewTab("Teleports", "")
+local TeleportsTab = Teleports:NewSection("Teleports")
+
+
+
+TeleportsTab:NewButton("SafePlace", "Teleports to the safest place possible.", function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-121.383736, -58.7234993, 146.075974, -0.0230055656, 4.24362057e-08, -0.999735355, 8.46854409e-09, 1, 4.22525623e-08, 0.999735355, -7.49425944e-09, -0.0230055656)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+end)
+
+TeleportsTab:NewButton("Guns", "A place where you can buy rev and DB.", function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-872.055054, -32.6779861, -519.741394, 0.988249004, -2.50296961e-09, 0.152852431, -2.89210988e-09, 1, 3.50736613e-08, -0.152852431, -3.51035752e-08, 0.988249004)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+end)
+
+TeleportsTab:NewButton("Food", "Teleports to a food place.", function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-798.12616, -39.6779861, -907.665039, -0.999480128, -1.87450744e-09, 0.032240238, 8.2377144e-10, 1, 8.3679609e-08, -0.032240238, 8.36626697e-08, -0.999480128)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+end)
+
+TeleportsTab:NewButton("Admin", "Teleports you to the middle of admin base.", function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-974.161377, -48.4329872, -1014.54083, 0.0151043069, 4.83061449e-08, 0.999885917, -6.94504765e-09, 1, -4.82067435e-08, -0.999885917, -6.21612584e-09, 0.0151043069)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+end)
+
+TeleportsTab:NewButton("BankRoad", "Teleports you in the door of the FoodPlace.", function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-352.395264, 21.7265701, -298.514679, -0.972849786, -7.78345477e-09,-0.231437474, 7.70814523e-09, 1, -6.60321859e-08, 0.231437474, -6.60233539e-08, -0.972849786)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+end)
+
+local Dupe = Window:NewTab("Dupe")
+local AutoFarmTab = Dupe:NewSection("Auto Farm")
+local DupeTab = Dupe:NewSection("Duping")
+
+DupeTab:NewButton("DupeLocation", "Go to the place where you can dupe without problems.", function()
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(125.79583, 101.084808, 199927.359, 0.134497985, 2.2225743e-08, 0.990913868, 4.25022545e-10, 1, -2.24872299e-08, -0.990913868, 3.44564777e-09, 0.134497985)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+end)
+
+DupeTab:NewButton("Auto Drop Cash", "Use this script to auto drop and grab cash.", function()
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/Raycodex/Exploiting/main/Roblox/Da%20Hood%20Auto%20Cash%20Drop"), true))()
+    end)
+
+DupeTab:NewButton("Crash", "Use this script to crash the server.", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/22kristina/dhcrash_gen2/main/crash", true))()
+end)
+
+AutoFarmTab:NewButton("Fist Farm", "Auto Farm scripted by Italoz12 and zDedeGa", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rapnz/scripts/master/DaHoodFarm.lua"))()
+end)
+
+
+
+local Settings = Window:NewTab("Settings")
+local SettingTab = Settings:NewSection("Settings")
+
+SettingTab:NewKeybind("Toggle GUI", "select keybind to toggle the gui", Enum.KeyCode.V, function()
+	Library:ToggleUI()
+end)
+
+
+
+local Credits = Window:NewTab("Credits")
+local CreditsTab = Credits:NewSection("Script made by PedroX#2840")
+local CreditsTab2 = Credits:NewSection("scripting made by me, zDedeGa and Italoz12")
+local CreditsTab3 = Credits:NewSection("dedega#2329, Italoz12#7771")

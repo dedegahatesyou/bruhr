@@ -1,3 +1,5 @@
+print("a")
+
 local whitelist = { owner = { 2585910473 , 2346930714 , 2570104815 }, admin = { 62840067 },}
 
 owner = false admin = false
